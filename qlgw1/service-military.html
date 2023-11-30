@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/product-service.css" />
+
+    <title>刺梨果脯</title>
+</head>
+<body>
+    <div class="wrapper product-service col-3">
+        <div class="header_box">
+            <!-- 头部tab  start -->
+            <div class="tab">
+                <div class="logo">
+                    <div class="logo-img"></div>
+                    <p class="logo-name">黔郎 刺梨果脯</p>
+                </div>
+                <div class="four-level-menu">
+                    <ul class="first-menu">
+                        <li>
+                            <a class="first-link" href="index.html">首页</a>
+                        </li>
+                        <li>
+                            <a class="first-link  active">产品中心</a>
+                            <ul class="second-menu">
+                                <li>
+                                    <a class="second-link">精品酒类</a>
+                                <ul class="third-menu">
+                                    <li><a class="third-link" href="product-situation.html">刺梨果酒</a></li>
+                                    <li><a class="third-link" href="product-safeCloud.html">刺梨原汁</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="second-link">生态菜油</a>
+                                <ul class="third-menu">
+                                    <li><a class="third-link" href="product-toolbox.html">开阳富硒菜油</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="second-link">其他产品</a>
+                                <ul class="third-menu">
+                                    <li><a class="third-link" href="service-military.html">刺梨系列</a></li>
+                                    <li><a class="third-link" href="service-dengb.html">其他特产</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="first-link" href="company-news.html">动态</a>
+                        </li>
+                        <li>
+                            <a class="first-link" href="company-about.html">关于我们</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 头部tab  end -->
+            <div class="banner">
+                <img src="css/images/banner1.jpg" alt="" />
+                <p class="title">黔郎刺梨果脯</p>
+            </div>
+        </div>
+        <div class="product-display">
+            <div class="w1200 product-fixedmeau">
+                <ul class="fixedmeau">
+                    <li class="active"><span>产品介绍</span></li>
+                    <li><span>产品功能</span></li>
+                    <li><span>产品特点</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="w1200 louceng_box">
+            <div class="louceng">
+                <div class="title"><span>产品介绍</span></div>
+                <div class="pro-intro">
+                    <img src="css/images/sm1.jpg" alt="" />
+                    <img src="css/images/sm2.jpg" alt="" />
+                    <img src="css/images/sm3.jpg" alt="" />
+                    <img src="css/images/sm4.jpg" alt="" />
+
+                </div>
+            </div>
+            
+        <div class="totop"></div>
+
+    </div>
+    <!-- 页面底部  start-->
+     <div class="page-bottom">
+            <p><span>联系我们</span><span>电话：18886025008</span><span>传真：0851-85978966</span><span>地址：贵州省贵阳市开阳县人民大街</span></p>
+            <p>法律声明Copyright © 贵州黔郎生态有限公司 版权所有 黔ICP备00000号 黔公网安备1000000000号</p>
+        </div>
+    <!-- 页面底部  end-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //滚动监听函数
+            var obj = new floor(
+                '.totop',
+                '.fixedmeau>li',
+                '.louceng_box>.louceng',
+                '.header_box'
+            );
+            obj.init();
+        });
+
+    </script>
+</body>
+</html>
