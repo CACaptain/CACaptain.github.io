@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        body {
+            padding: 50px 20px;
+            background: #f5f5f5;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .note-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 36px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .form-label {
+            width: 180px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #3498db;
+        }
+
+        .short-input {
+            width: 200px;
+            flex: none;
+        }
+
+        .amount-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .btn-print {
+            background: #3498db;
+            color: #fff;
+        }
+
+        .btn-check {
+            background: #2ecc71;
+            color: #fff;
+        }
+
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .signature-col {
+            text-align: center;
+            width: 33%;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #333;
+            margin: 20px 0;
+            height: 30px;
+        }
+
+        .tip {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .note-container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .btn-group, .tip {
+                display: none;
+            }
+
+            .form-input {
+                border: none;
+                border-bottom: 1px solid #333;
+                padding: 2px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="note-container">
+        <h1 class="title">借款借条</h1>
+
+        <div class="section">
+            <div class="form-group">
+                <span class="form-label">借款用途：</span>
+                <input type="text" class="form-input" id="purpose" placeholder="请填写借款用途，如：购房、经营周转等">
+            </div>
+            <div class="form-group">
+                <span class="form-label">借款金额：</span>
+                <div class="amount-group">
+                    <input type="text" class="form-input" id="amount-upper" placeholder="大写金额，如：人民币壹万元整">
+                    <input type="text" class="form-input short-input" id="amount-lower" placeholder="数字金额，如：10000.00">
+                </div>
+            </div>
+            <div class="form-group">
+                <span class="form-label">借款年利率：</span>
+                <input type="text" class="form-input short-input" id="rate" placeholder="如：10（%）">
+                
+            </div>
+            <div class="form-group">
+                <span class="form-label">借款日期：</span>
+                <input type="date" class="form-input short-input" id="lend-date">
+            </div>
+            <div class="form-group">
+                <span class="form-label">还款日期：</span>
+                <input type="date" class="form-input short-input" id="repay-date">
+            </div>
+            <div class="form-group">
+                <span class="form-label">还款方式：</span>
+                <input type="text" class="form-input" id="repay-method" placeholder="如：到期一次性还本付息、按月付息到期还本等">
+            </div>
+            <div class="form-group">
+                <span class="form-label">支付方式：</span>
+                <input type="text" class="form-input" id="pay-method" placeholder="如：微信转账、银行转账（开户行+账号）、现金">
+            </div>
+        </div>
+
+
+		        <div class="section">
+            <div class="section-title">借款方信息</div>
+            <div class="form-group">
+                <span class="form-label">姓名：</span>
+                <input type="text" class="form-input short-input" id="borrower-name" placeholder="借款人姓名">
+            </div>
+            <div class="form-group">
+                <span class="form-label">身份证号：</span>
+                <input type="text" class="form-input" id="borrower-id" placeholder="借款人身份证号码">
+            </div>
+            <div class="form-group">
+                <span class="form-label">联系电话：</span>
+                <input type="text" class="form-input short-input" id="borrower-phone" placeholder="借款人手机号">
+            </div>
+            <div class="form-group">
+                <span class="form-label">联系地址：</span>
+                <input type="text" class="form-input" id="borrower-address" placeholder="借款人常住地址">
+            </div>
+        </div>
+
+		 <div class="section">
+            <div class="section-title">担保方信息</div>
+            <div class="form-group">
+                <span class="form-label">姓名：</span>
+                <input type="text" class="form-input short-input" id="lender-name" placeholder="出借人姓名">
+            </div>
+            <div class="form-group">
+                <span class="form-label">身份证号：</span>
+                <input type="text" class="form-input" id="lender-id" placeholder="出借人身份证号码">
+            </div>
+            <div class="form-group">
+                <span class="form-label">联系电话：</span>
+                <input type="text" class="form-input short-input" id="lender-phone" placeholder="出借人手机号">
+            </div>
+			
+			 <div class="form-group">
+                <span class="form-label">联系地址：</span>
+                <input type="text" class="form-input" id="borrower-address" placeholder="借款人常住地址">
+            </div>
+			
+        </div>
+		
+
+
+		  <div class="section">
+            <div class="section-title">出借方信息</div>
+            <div class="form-group">
+                <span class="form-label">姓名：</span>
+                <input type="text" class="form-input short-input" id="lender-name" placeholder="出借人姓名">
+            </div>
+            <div class="form-group">
+                <span class="form-label">身份证号：</span>
+                <input type="text" class="form-input" id="lender-id" placeholder="出借人身份证号码">
+            </div>
+            <div class="form-group">
+                <span class="form-label">联系电话：</span>
+                <input type="text" class="form-input short-input" id="lender-phone" placeholder="出借人手机号">
+            </div>
+        </div>
+		
+        <div class="section">
+            <div class="section-title">违约责任与管辖</div>
+            <div class="form-group">
+                <span class="form-label">违约约定：</span>
+                <input type="text" class="form-input" id="breach" placeholder="如：借款人逾期还款，每日按未还金额的0.05%支付违约金">
+            </div>
+            <div class="form-group">
+                <span class="form-label">管辖法院：</span>
+                <input type="text" class="form-input" id="court" placeholder="如：出借人所在地人民法院">
+            </div>
+        </div>
+
+        <div class="signature-area">
+           
+            <div class="signature-col">
+                <div>借款方（签字/按手印）</div>
+                <div class="signature-line"></div>
+                <div>日期：<input type="date" class="form-input short-input" id="borrower-sign-date"></div>
+            </div>
+			
+			
+			 <div class="signature-col">
+                <div>担保方（签字/按手印）</div>
+                <div class="signature-line"></div>
+                <div>日期：<input type="date" class="form-input short-input" id="lender-sign-date"></div>
+            </div>
+			
+			 <div class="signature-col">
+                <div>出借方（签字/按手印）</div>
+                <div class="signature-line"></div>
+                <div>日期：<input type="date" class="form-input short-input" id="lender-sign-date"></div>
+            </div>
+			
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-check" onclick="checkForm()">验证必填项</button>
+            <button class="btn btn-print" onclick="window.print()">打印借条</button>
+        </div>
+
+        <div class="tip">提示：本借条一式三份，出借方、担保方与借款方各执一份，签字后生效；</div>
+    </div>
+
+    <script>
+        function checkForm() {
+            const required = [
+                'purpose', 'amount-upper', 'amount-lower', 'rate',
+                'lend-date', 'repay-date', 'repay-method', 'pay-method',
+                'lender-name', 'lender-id', 'lender-phone',
+                'borrower-name', 'borrower-id', 'borrower-phone'
+            ];
+            let isComplete = true;
+            let emptyFields = [];
+
+            required.forEach(id => {
+                const input = document.getElementById(id);
+                if (!input.value.trim()) {
+                    isComplete = false;
+                    emptyFields.push(input.placeholder);
+                }
+            });
+
+            if (isComplete) {
+                alert('所有必填项已填写完整，可打印借条！');
+            } else {
+                alert('以下必填项未填写：\n' + emptyFields.join('\n'));
+            }
+        }
+    </script>
+</body>
+</html>
